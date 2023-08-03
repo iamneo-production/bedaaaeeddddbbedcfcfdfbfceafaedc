@@ -57,7 +57,7 @@ public class TaskServiceImpl implements TaskService {
     }
 
     @Override
-    public void changeStatus(long id,TaskDto taskDto)
+    public TaskDto changeStatus(long id,TaskDto taskDto)
     {
         Task task = taskRepository.findById(id).orElseThrow(() -> new ResourceNotFoundException("Task","taskId", id));
         task.setTaskId(taskDto.getTaskId());
@@ -66,6 +66,8 @@ public class TaskServiceImpl implements TaskService {
         task.setTaskName(taskDto.getTaskName());
         task.setTaskStatus(taskDto.getTaskStatus());
         taskRepository.save(task);
+        TaskDto taskResponse = mapToDto(task);
+        return taskResponse;
     }
 
     public TaskDto mapToDto(Task task) {

@@ -47,10 +47,9 @@ public class TaskController {
     }
     
     @GetMapping("/changeStatus")
-    public ResponseEntity<String> changeStatus(@RequestParam long id,@RequestBody TaskDto taskDto)
+    public ResponseEntity<TaskDto> changeStatus(@RequestParam long id,@RequestBody TaskDto taskDto)
     {
-        taskService.changeStatus(id,taskDto);
-        return new ResponseEntity<>("Updated Successfully",HttpStatus.OK);
+        return new ResponseEntity<>(taskService.changeStatus(id,taskDto),HttpStatus.OK);
     }
 
 }   

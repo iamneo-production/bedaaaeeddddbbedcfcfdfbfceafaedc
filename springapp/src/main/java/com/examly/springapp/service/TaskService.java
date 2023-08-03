@@ -11,5 +11,5 @@ public interface TaskService {
     void deleteTask(long id);
 
     TaskDto getTaskById(long taskId);
-    void changeStatus(long id,TaskDto taskDto);
+    TaskDto changeStatus(long id,TaskDto taskDto);
 }
