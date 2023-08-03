@@ -41,7 +41,7 @@ public class TaskController {
 
 
     @GetMapping("/deleteTask")
-    public ResponseEntity<String> deleteTask(@RequestParam long id){
+    public ResponseEntity<TaskDto> deleteTask(@RequestParam long id){
         return new ResponseEntity<>(taskService.deleteTask(id),HttpStatus.OK);
     }
     
