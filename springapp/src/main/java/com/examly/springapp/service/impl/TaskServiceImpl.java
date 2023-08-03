@@ -56,6 +56,9 @@ public class TaskServiceImpl implements TaskService {
         taskRepository.delete(task);
     }
 
+    @Override
+    public void changeStatu
+
     public TaskDto mapToDto(Task task) {
 		TaskDto taskDto = new TaskDto();
         taskDto.setTaskId(task.getTaskId());
@@ -77,4 +80,5 @@ public class TaskServiceImpl implements TaskService {
 		return task;
 	}
     
+
 }

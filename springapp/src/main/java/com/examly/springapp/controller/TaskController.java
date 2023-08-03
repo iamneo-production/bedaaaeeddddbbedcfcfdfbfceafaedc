@@ -50,7 +50,7 @@ public class TaskController {
     public ResponseEntity<String> changeStatus(@RequestParam long id,@RequestBody TaskDto taskDto)
     {
         taskService.changeStatus(id,taskDto);
-        return new
+        return new ResponseEntity<>("Updated Successfully",HttpStatus.OK);
     }
 
 }   
