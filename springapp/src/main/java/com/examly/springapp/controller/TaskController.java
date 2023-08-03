@@ -45,4 +45,12 @@ public class TaskController {
         taskService.deleteTask(id);
         return new ResponseEntity<>("Deleted Successfully",HttpStatus.OK);
     }
+    
+    @GetMapping("/changeStatus")
+    public ResponseEntity<String> changeStatus(@RequestParam long id,@RequestBody TaskDto taskDto)
+    {
+        taskService.changeStatus(id,taskDto);
+        return new
+    }
+
 }   
