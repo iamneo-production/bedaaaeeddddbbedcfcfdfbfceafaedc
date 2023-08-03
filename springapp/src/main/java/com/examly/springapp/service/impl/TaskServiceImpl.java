@@ -59,13 +59,13 @@ public class TaskServiceImpl implements TaskService {
     @Override
     public void changeStatus(long id,TaskDto taskDto)
     {
-        Task task = taskRepository.findById(taskId);
+        Task task = taskRepository.findById(id).orElseThrow(() -> new ResourceNotFoundException("Task","taskId", id));
         task.setTaskId(taskDto.getTaskId());
         task.setTaskHolderName(taskDto.getTaskHolderName());
         task.setTaskDate(taskDto.getTaskDate());
         task.setTaskName(taskDto.getTaskName());
         task.setTaskStatus(taskDto.getTaskStatus());
-        taskRepository.save(tas)
+        taskRepository.save(task);
     }
 
     public TaskDto mapToDto(Task task) {
