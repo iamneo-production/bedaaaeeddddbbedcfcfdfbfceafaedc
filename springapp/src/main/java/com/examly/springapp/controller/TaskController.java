@@ -37,18 +37,17 @@ public class TaskController {
     }
 
     @GetMapping("/getTask")
-    public ResponseEntity<?> getTaskById(@RequestParam long id){
+    public ResponseEntity<TaskDto> getTaskById(@RequestParam long id){
         return new ResponseEntity<>(taskService.getTaskById(id),HttpStatus.OK);
     }
 
     @DeleteMapping("/deleteTask")
-    public void deleteTask(@RequestParam long id){
-        taskService.deleteTask(id);
-       // return new ResponseEntity<>(HttpStatus.OK);
+    public ResponseEntity<TaskDto> deleteTask(@RequestParam long id){
+        return new ResponseEntity<>(taskService.deleteTask(id),HttpStatus.OK);
     }
     
     @PutMapping("/changeStatus")
-    public ResponseEntity<?> changeStatus(@RequestParam long id,@RequestBody TaskDto taskDto)
+    public ResponseEntity<TaskDto> changeStatus(@RequestParam long id,@RequestBody TaskDto taskDto)
     {
         return new ResponseEntity<>(taskService.changeStatus(id,taskDto),HttpStatus.OK);
     }
