@@ -45,16 +45,19 @@ public class TaskServiceImpl implements TaskService {
 
     @Override
     public TaskDto getTaskById(long taskId){
-        Task task = taskRepository.findById(taskId).orElseThrow(() -> new ResourceNotFoundException("Task","taskId", taskId));
-        return mapToDto(task);
+       // Task task = taskRepository.findById(taskId).orElseThrow(() -> new ResourceNotFoundException("Task","taskId", taskId));
+       Task task = taskRepository.findById(taskId);
+       if(task==null)
+          return task;
+       return mapToDto(task);
     }
 
     @Override
     public TaskDto deleteTask(long taskId){
        // Task task = taskRepository.findById(taskId).orElseThrow(() -> new ResourceNotFoundException("Task","taskId", taskId));
        Task task = taskRepository.findById(taskId);
-       if(task== !null)
-    
+       if(task==null)
+          return task;
        taskRepository.delete(task);
         return mapToDto(task);
     }
@@ -62,8 +65,11 @@ public class TaskServiceImpl implements TaskService {
     @Override
     public TaskDto changeStatus(long id,TaskDto taskDto)
     {
-        Task task = taskRepository.findById(id).orElseThrow(() -> new ResourceNotFoundException("Task","taskId", id));
-        task.setTaskId(taskDto.getTaskId());
+       // Task task = taskRepository.findById(id).orElseThrow(() -> new ResourceNotFoundException("Task","taskId", id));
+        Task task = taskRepository.findById(taskId);
+        if(task==null)
+          return task;
+       task.setTaskId(taskDto.getTaskId());
         task.setTaskHolderName(taskDto.getTaskHolderName());
         task.setTaskDate(taskDto.getTaskDate());
         task.setTaskName(taskDto.getTaskName());
