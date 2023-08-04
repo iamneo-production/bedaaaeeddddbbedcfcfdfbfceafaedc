@@ -46,7 +46,7 @@ public class TaskServiceImpl implements TaskService {
     @Override
     public Object getTaskById(long taskId){
        // Task task = taskRepository.findById(taskId).orElseThrow(() -> new ResourceNotFoundException("Task","taskId", taskId));
-       Task task = taskRepository.findById(taskId);
+       Optional<Task> = taskRepository.findById(taskId);
        if(task==null)
           return null;
        return mapToDto(task);

@@ -10,6 +10,6 @@ public interface TaskService {
     List<TaskDto> getAllTasks();
     void deleteTask(long id);
 
-    TaskDto getTaskById(long taskId);
-    TaskDto changeStatus(long id,TaskDto taskDto);
+   Object getTaskById(long taskId);
+    Object changeStatus(long id,TaskDto taskDto);
 }
