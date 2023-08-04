@@ -1,6 +1,7 @@
 package com.examly.springapp.service.impl;
 
 import java.util.List;
+import java.util.Optional;
 import java.util.stream.Collectors;
 
 import com.examly.springapp.entity.Task;
@@ -44,32 +45,23 @@ public class TaskServiceImpl implements TaskService {
     }
 
     @Override
-    public Object getTaskById(long taskId){
-       // Task task = taskRepository.findById(taskId).orElseThrow(() -> new ResourceNotFoundException("Task","taskId", taskId));
-       Optional<Task> = taskRepository.findById(taskId);
-       if(task==null)
-          return null;
+    public TaskDto getTaskById(long taskId){
+       Task task = taskRepository.findById(taskId).orElseThrow(() -> new ResourceNotFoundException("Task","taskId", taskId));
        return mapToDto(task);
     }
 
     @Override
-    public void deleteTask(long taskId){
-       // Task task = taskRepository.findById(taskId).orElseThrow(() -> new ResourceNotFoundException("Task","taskId", taskId));
-       Task task = taskRepository.findById(taskId);
-       if(task==null)
-         return;
+    public TaskDto deleteTask(long taskId){
+      Task task = taskRepository.findById(taskId).orElseThrow(() -> new ResourceNotFoundException("Task","taskId", taskId));
        taskRepository.delete(task);
-        return ;
+        return mapToDto(task);
     }
 
     @Override
-    public Object changeStatus(long id,TaskDto taskDto)
+    public TaskDto changeStatus(long id,TaskDto taskDto)
     {
-       // Task task = taskRepository.findById(id).orElseThrow(() -> new ResourceNotFoundException("Task","taskId", id));
-        Task task = taskRepository.findById(taskId);
-        if(task==null)
-          return null;
-       task.setTaskId(taskDto.getTaskId());
+      Task task = taskRepository.findById(id).orElseThrow(() -> new ResourceNotFoundException("Task","taskId", id));
+        task.setTaskId(taskDto.getTaskId());
         task.setTaskHolderName(taskDto.getTaskHolderName());
         task.setTaskDate(taskDto.getTaskDate());
         task.setTaskName(taskDto.getTaskName());

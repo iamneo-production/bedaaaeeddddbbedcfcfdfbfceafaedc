@@ -8,8 +8,8 @@ import com.examly.springapp.payload.TaskDto;
 public interface TaskService {
     TaskDto createTask(TaskDto taskDto);
     List<TaskDto> getAllTasks();
-    void deleteTask(long id);
+    TaskDto deleteTask(long id);
 
-   Object getTaskById(long taskId);
-    Object changeStatus(long id,TaskDto taskDto);
+    TaskDto getTaskById(long taskId);
+    TaskDto changeStatus(long id,TaskDto taskDto);
 }
