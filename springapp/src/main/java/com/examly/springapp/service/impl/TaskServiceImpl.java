@@ -51,8 +51,11 @@ public class TaskServiceImpl implements TaskService {
 
     @Override
     public TaskDto deleteTask(long taskId){
-        Task task = taskRepository.findById(taskId).orElseThrow(() -> new ResourceNotFoundException("Task","taskId", taskId));
-        taskRepository.delete(task);
+       // Task task = taskRepository.findById(taskId).orElseThrow(() -> new ResourceNotFoundException("Task","taskId", taskId));
+       Task task = taskRepository.findById(taskId);
+       if(task== !null)
+    
+       taskRepository.delete(task);
         return mapToDto(task);
     }
 
