@@ -6,7 +6,7 @@ import org.springframework.web.bind.annotation.RequestBody;
 import org.springframework.web.bind.annotation.RequestParam;
 import org.springframework.web.bind.annotation.RestController;
 import org.springframework.beans.factory.annotation.Autowired;
-import 
+import com.examly.springapp.*;
 import java.util.List;
 
 @RestController
@@ -36,8 +36,8 @@ public class TaskController {
     }
 
     @GetMapping("/changeStatus")
-    public Task updateTask(@RequestParam long taskId, @RequestBody Task task){
-        return taskService.updateTask(taskId, task);
+    public Task updateTask(@RequestParam long taskId){
+        return taskService.updateTask(taskId);
     }    
     
 }

@@ -33,14 +33,10 @@ public class TaskService {
         return task;
     }
 
-    public Task updateTask(long taskId, Task task){
+    public Task updateTask(long taskId){
         Optional<Task> taskList = taskRepository.findById(taskId);
         Task t = taskList.get();
-        t.setTaskId(task.getTaskId());
-        t.setTaskName(task.getTaskName());
-        t.setTaskDate(task.getTaskDate());
-        t.setTaskHolderName(task.getTaskHolderName());
-        t.setTaskStatus(task.getTaskStatus());
+        t.setTaskStatus("completed");
         taskRepository.save(t);
         return t;    
     }
