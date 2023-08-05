@@ -1,28 +1,15 @@
 package com.examly.springapp;
 
 import javax.persistence.*;
-import javax.persistence.Entity;
-import javax.persistence.GeneratedValue;
-import javax.persistence.GenerationType;
-import javax.persistence.Id;
-import javax.persistence.Table;
-import javax.persistence.UniqueConstraint;
 
 @Entity
-@Table(name = "tasks", uniqueConstraints = {@UniqueConstraint(columnNames = {"taskId"})})
 public class Task {
 
     @Id
     private long taskId; 
-
-	@Column(name="taskHolderName",nullable = false)
     private String taskHolderName;
-    
-	@Column(name="taskDate",nullable = false)
     private String taskDate;
-	@Column(name="taskName",nullable = false)
     private String taskName;
-	@Column(name="taskStatus",nullable = false)
     private String taskStatus;
 
     public Task(){
@@ -36,16 +23,6 @@ public class Task {
         this.taskName = taskName;
         this.taskStatus = taskStatus;
     }
-
-    
-
-    @Override
-    public String toString() {
-        return "Task [taskDate=" + taskDate + ", taskHolderName=" + taskHolderName + ", taskId=" + taskId
-                + ", taskName=" + taskName + ", taskStatus=" + taskStatus + "]";
-    }
-
-
 
     public long getTaskId() {
         return taskId;
