@@ -22,12 +22,20 @@ public class TaskService {
     }    
 
     public Task getTaskById(long taskId){
-        Optional <task> list = taskRepository.findById(taskId);
-        return task;
+        Optional <Task> taskList = taskRepository.findById(taskId);
+        return taskList.get();
     }
 
     public Task deleteTask(long taskId){
-        Task task = taskRepository.findById(id)
+        Optional <Task> taskList = taskRepository.findById(taskId);
+        Task task = taskList.get();
+        taskRepository.deleteById(taskId);
+        return task;
+    }
+
+    public Task updateTask(long taskId, Task task){
+        Optional<Task> taskList = taskRepository.findById(taskId);
+        
     }
 
 

@@ -34,11 +34,13 @@ public class TaskController {
     }
 
     @GetMapping("/deleteTask")
-    public Task deleteTask(@RequestParam long TaskId)  {
+    public Task deleteTask(@RequestParam long taskId)  {
         return taskService.deleteTask(taskId);
     }
 
     @GetMapping("/changeStatus")
-    public ResponseEntity<TaskDto> changeStatus(@RequestParam long id,  @RequestBody TaskDto taskDto     return new ResponseEntity<>(taskService.changeStatus(id, taskDto), HttpStatus.OK);
-    }  
+    public Task updateTask(@RequestParam long taskId, @RequestBody Task task){
+        return taskService.updateTask(taskId, task);
+    }    
+    
 }
