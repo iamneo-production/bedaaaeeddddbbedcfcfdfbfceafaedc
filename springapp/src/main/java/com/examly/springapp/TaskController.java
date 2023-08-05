@@ -9,24 +9,21 @@ import org.springframework.web.bind.annotation.RequestParam;
 import org.springframework.web.bind.annotation.RestController;
 import com.examly.springapp.TaskService;
 import org.springframework.beans.factory.annotation.Autowired;
+import com.examly.springapp.Task;
 
 @RestController
 public class TaskController {
     
-    private TaskService askService;
-
     @Autowired
-    public TaskController(TaskService taskService)  {
-        this.taskService = taskService;
-    }
+    private TaskService taskService;  
 
     @PostMapping("/saveTask")
-    public ResponseEntity<TaskDto> createTask(@RequestBody TaskDto taskDto)  {
-        return new ResponseEntity<>(taskService.createTask(taskDto),  HttpStatus.OK);
+    public void createTask(@RequestBody Task task)  {
+        taskService.createTask(task);  
     }
 
     @GetMapping("/alltasks")
-    public List<TaskDto> getAllTasks()  {
+    public List<Task> getAllTasks()  {
         return taskService.getAllTasks();
     }
 
