@@ -10,6 +10,7 @@ import org.springframework.web.bind.annotation.RestController;
 import com.examly.springapp.TaskService;
 import org.springframework.beans.factory.annotation.Autowired;
 import com.examly.springapp.Task;
+import java.util.List;
 
 @RestController
 public class TaskController {
@@ -28,8 +29,8 @@ public class TaskController {
     }
 
     @GetMapping("/getTask")
-    public ResponseEntity<TaskDto> getTaskById(@RequestParam long id)  {
-        return new ResponseEntity<>(taskService.getTaskById(id),  HttpStatus.OK);
+    public Task getTaskById(@RequestParam long taskId)  {
+        return taskService.getTaskById(taskId);
     }
 
     @GetMapping("/deleteTask")
