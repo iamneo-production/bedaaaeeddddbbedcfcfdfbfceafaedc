@@ -1,8 +1,5 @@
-com/examly/springapp/payload/TaskDto.class
-com/examly/springapp/repository/TaskRepository.class
+com/examly/springapp/Task.class
+com/examly/springapp/TaskRepository.class
+com/examly/springapp/TaskService.class
+com/examly/springapp/TaskController.class
 com/examly/springapp/SpringappApplication.class
-com/examly/springapp/service/TaskService.class
-com/examly/springapp/service/impl/TaskServiceImpl.class
-com/examly/springapp/exception/ResourceNotFoundException.class
-com/examly/springapp/entity/Task.class
-com/examly/springapp/controller/TaskController.class
